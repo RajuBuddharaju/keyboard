@@ -2,6 +2,8 @@ points:
     key.padding: cy
     zones:
         main:
+            anchor:
+                shift: [100, -100]
             rows:
                 bottom.row_net: P2
                 home.row_net: P0
@@ -13,95 +15,64 @@ points:
                         spread: cx
                     rows:
                         bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_home
                         home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_top
                         top:
-                            led_in: "rgb_{{name}}"
                 ring:
                     key:
                         col_net: P6
+                        origin: [-12, -19]
                         stagger: 4
+                        splay: -7
                         spread: cx
                     rows:
                         bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_pinky_bottom
                         home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_bottom
                         top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_home
                 middle:
                     key:
                         col_net: P5
-                        stagger: 2
+                        stagger: 2.5
                         spread: cx
                     rows:
                         bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_middle_home
                         home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_middle_top
                         top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_ring_top
                 index:
                     key:
                         col_net: P4
-                        stagger: -2
+                        stagger: -2.5
                         spread: cx
                     rows:
                         bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_thumb_home_home
                         home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_bottom
                         top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_home
                 inner:
                     key:
                         col_net: P3
-                        stagger: -2
+                        stagger: -2.5
                         spread: cx
                     rows:
                         bottom:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_inner_home
                         home:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_inner_top
                         top:
-                            led_in: "rgb_{{name}}"
-                            led_out: rgb_main_index_top
         thumb:
             anchor:
-                ref: main_index_bottom
-                shift: [-0.5cx, -cy]
+                ref: main_inner_bottom
+                shift: [-1.2cx, -1.5cy]
             rows.home.row_net: P8
             columns:
                 inner.key:
                     col_net: P5
-                    led_in: "rgb_{{name}}"
-                    led_out: rgb_main_middle_bottom
                     spread: cx
+                    splay: -5
                 home.key:
                     col_net: P4
-                    led_in: "rgb_{{name}}"
-                    led_out: rgb_thumb_inner_home
                     spread: cx + 2
                     rotate: -18
                     stagger: -3.2
                 outer.key:
                     col_net: P3
                     led_in: P9
-                    led_out: rgb_main_inner_bottom
                     spread: cx
                     rotate: -36
                     stagger: -9.2
@@ -178,7 +149,7 @@ outlines:
         -   what: outline
             name: _keycap_outlines
             operation: stack
-cases.josukey:
+cases.production:
     -   what: outline
         name: _board_outline
         extrude: 3
@@ -187,22 +158,13 @@ cases.josukey:
         name: _keycap_outlines
         extrude: 6
         operation: add
-pcbs.josukey:
+pcbs.production:
     outlines:
         main.outline: _board_outline
         keycaps:
             outline: _keycap_outlines
             layer: Eco1.User
     footprints:
-        led:
-            what: sk6812mini
-            where: true
-            adjust:
-                shift: [0, -5]
-            params:
-                din: "{{led_in}}"
-                dout: "{{led_out}}"
-                cutout: true
         diode:
             what: sod-123w
             where: true
@@ -217,7 +179,6 @@ pcbs.josukey:
             where: true
             params:
                 keycaps: true
-                reverse: true
                 hotswap: true
                 from: "{{col_net}}"
                 to: "{{name}}"
@@ -228,23 +189,23 @@ pcbs.josukey:
             adjust:
                 shift: [22, 6.5]
                 rotate: -90
-        jst-s2b-ph-kl:
-            what: jst-s2b-ph-kl
-            where:
-                ref: main_inner_bottom
-                shift: [21, -2]
-                rotate: 180
-            params:
-                neg: GND
-        pcm12:
-            what: pcm12
-            where:
-                ref: main_inner_bottom
-                shift: [30.5, 3]
-                rotate: 90
-            params:
-                from: pos
-                to: RAW
+        # jst-s2b-ph-kl:
+        #     what: jst-s2b-ph-kl
+        #     where:
+        #         ref: main_inner_bottom
+        #         shift: [21, -2]
+        #         rotate: 180
+        #     params:
+        #         neg: GND
+        # pcm12:
+        #     what: pcm12
+        #     where:
+        #         ref: main_inner_bottom
+        #         shift: [30.5, 3]
+        #         rotate: 90
+        #     params:
+        #         from: pos
+        #         to: RAW
         wuerth-434121025816:
             what: wuerth-434121025816
             where:
@@ -260,7 +221,7 @@ pcbs.josukey:
                 ref: main_pinky_bottom
                 shift: [12, -7]
             params: &textParams
-                text: Josukey\nA keyboard for Joey
+                text: Ergonator
                 justify: left
         back_text:
             <<: *text
@@ -284,26 +245,26 @@ pcbs.josukey:
                         y: 2
                     -   x: -0.5
                         y: 2
-        peace: &icon
-            what: peace
-            where:
-                ref: main_inner_bottom
-                shift: [13, -6]
-            params:
-                scale: 2
-        love:
-            <<: *icon
-            what: love
-        safeIcon:
-            <<: *icon
-            what: keepout
-            params:
-                points:
-                    -   x: -0.5
-                        y: -0.5
-                    -   x: 13.25
-                        y: -0.5
-                    -   x: 13.25
-                        y: 13.25
-                    -   x: -0.5
-                        y: 13.25
+        # peace: &icon
+        #     what: peace
+        #     where:
+        #         ref: main_inner_bottom
+        #         shift: [13, -6]
+        #     params:
+        #         scale: 2
+        # love:
+        #     <<: *icon
+        #     what: love
+        # safeIcon:
+        #     <<: *icon
+        #     what: keepout
+        #     params:
+        #         points:
+        #             -   x: -0.5
+        #                 y: -0.5
+        #             -   x: 13.25
+        #                 y: -0.5
+        #             -   x: 13.25
+        #                 y: 13.25
+        #             -   x: -0.5
+        #                 y: 13.25
