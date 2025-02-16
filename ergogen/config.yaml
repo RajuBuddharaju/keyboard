@@ -5,13 +5,13 @@ points:
             anchor:
                 shift: [100, -100]
             rows:
-                bottom.row_net: P2
+                bottom.row_net: P4
                 home.row_net: P0
                 top.row_net: P1
             columns:
                 pinky:
                     key:
-                        col_net: P7
+                        col_net: P9
                         spread: cx
                     rows:
                         bottom:
@@ -19,7 +19,7 @@ points:
                         top:
                 ring:
                     key:
-                        col_net: P6
+                        col_net: P8
                         origin: [-12, -19]
                         stagger: 4
                         splay: -7
@@ -30,7 +30,7 @@ points:
                         top:
                 middle:
                     key:
-                        col_net: P5
+                        col_net: P7
                         stagger: 2.5
                         spread: cx
                     rows:
@@ -39,7 +39,7 @@ points:
                         top:
                 index:
                     key:
-                        col_net: P4
+                        col_net: P6
                         stagger: -2.5
                         spread: cx
                     rows:
@@ -48,7 +48,7 @@ points:
                         top:
                 inner:
                     key:
-                        col_net: P3
+                        col_net: P5
                         stagger: -2.5
                         spread: cx
                     rows:
@@ -59,106 +59,105 @@ points:
             anchor:
                 ref: main_inner_bottom
                 shift: [-1.2cx, -1.5cy]
-            rows.home.row_net: P8
+            rows.home.row_net: P10
             columns:
                 inner.key:
-                    col_net: P5
+                    col_net: P7
                     spread: cx
                     splay: -5
                 home.key:
-                    col_net: P4
+                    col_net: P6
                     spread: cx + 2
                     rotate: -18
                     stagger: -3.2
                 outer.key:
-                    col_net: P3
-                    led_in: P9
+                    col_net: P5
                     spread: cx
                     rotate: -36
                     stagger: -9.2
 outlines:
     _board_outline:
-        -   what: polygon
-            fillet: 2
-            points:
-                -   ref: thumb_outer_home
-                    shift: [0.6cx, 0.6cy]
-                -   ref: thumb_outer_home
-                    shift: [0.6cx, -0.6cy]
-                -   ref: thumb_outer_home
-                    shift: [-0.4cx, -0.6cy]
+        - what: polygon
+          fillet: 2
+          points:
+              - ref: thumb_outer_home
+                shift: [0.6cx, 0.6cy]
+              - ref: thumb_outer_home
+                shift: [0.6cx, -0.6cy]
+              - ref: thumb_outer_home
+                shift: [-0.4cx, -0.6cy]
 
-                -   ref: thumb_home_home
-                    shift: [0.4cx, -0.6cy]
-                -   ref: thumb_home_home
-                    shift: [-0.4cx, -0.6cy]
+              - ref: thumb_home_home
+                shift: [0.4cx, -0.6cy]
+              - ref: thumb_home_home
+                shift: [-0.4cx, -0.6cy]
 
-                -   ref: thumb_inner_home
-                    shift: [0.4cx, -0.6cy]
-                -   ref: thumb_inner_home
-                    shift: [-0.6cx, -0.6cy]
+              - ref: thumb_inner_home
+                shift: [0.4cx, -0.6cy]
+              - ref: thumb_inner_home
+                shift: [-0.6cx, -0.6cy]
 
-                -   ref: main_pinky_bottom
-                    shift: [1.6cx, -0.6cy]
-                -   ref: main_pinky_bottom
-                    shift: [0.6cx, -0.6cy]
-                -   ref: main_pinky_bottom
-                    shift: [-0.6cx, -0.6cy]
+              - ref: main_pinky_bottom
+                shift: [1.6cx, -0.6cy]
+              - ref: main_pinky_bottom
+                shift: [0.6cx, -0.6cy]
+              - ref: main_pinky_bottom
+                shift: [-0.6cx, -0.6cy]
 
-                -   ref: main_pinky_top
-                    shift: [-0.6cx, 0.6cy]
-                -   ref: main_pinky_top
-                    shift: [0.4cx, 0.6cy]
+              - ref: main_pinky_top
+                shift: [-0.6cx, 0.6cy]
+              - ref: main_pinky_top
+                shift: [0.4cx, 0.6cy]
 
-                -   ref: main_ring_top
-                    shift: [-0.5cx, 0.6cy]
-                -   ref: main_ring_top
-                    shift: [0.4cx, 0.6cy]
+              - ref: main_ring_top
+                shift: [-0.5cx, 0.6cy]
+              - ref: main_ring_top
+                shift: [0.4cx, 0.6cy]
 
-                -   ref: main_middle_top
-                    shift: [-0.4cx, 0.61cy]
-                -   ref: main_middle_top
-                    shift: [0.4cx, 0.6cy]
+              - ref: main_middle_top
+                shift: [-0.4cx, 0.61cy]
+              - ref: main_middle_top
+                shift: [0.4cx, 0.6cy]
 
-                -   ref: main_index_top
-                    shift: [-0.4cx, 0.6cy]
-                -   ref: main_index_top
-                    shift: [0.5cx, 0.6cy]
+              - ref: main_index_top
+                shift: [-0.4cx, 0.6cy]
+              - ref: main_index_top
+                shift: [0.5cx, 0.6cy]
 
-                -   ref: main_inner_top
-                    shift: [-0.4cx, 0.6cy]
-                -   ref: main_inner_top
-                    shift: [0.5cx, 0.6cy]
+              - ref: main_inner_top
+                shift: [-0.4cx, 0.6cy]
+              - ref: main_inner_top
+                shift: [0.5cx, 0.6cy]
 
-                -   ref: main_inner_top
-                    shift: [0.6cx, 0.4cy]
-                -   ref: main_inner_top
-                    shift: [1.8cx, 0.4cy]
+              - ref: main_inner_top
+                shift: [0.6cx, 0.4cy]
+              - ref: main_inner_top
+                shift: [1.8cx, 0.4cy]
 
-                -   ref: main_inner_bottom
-                    shift: [1.8cx, -0.6cy]
+              - ref: main_inner_bottom
+                shift: [1.8cx, -0.6cy]
     _keycap_outlines:
-        -   what: rectangle
-            fillet: 2
-            where: true
-            size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        - what: rectangle
+          fillet: 2
+          where: true
+          size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
     preview:
-        -   what: outline
-            name: _board_outline
-            operation: stack
-        -   what: outline
-            name: _keycap_outlines
-            operation: stack
-cases.production:
-    -   what: outline
-        name: _board_outline
-        extrude: 3
-        operation: subtract
-    -   what: outline
-        name: _keycap_outlines
-        extrude: 6
-        operation: add
-pcbs.production:
+        - what: outline
+          name: _board_outline
+          operation: stack
+        - what: outline
+          name: _keycap_outlines
+          operation: stack
+cases.ergonator:
+    - what: outline
+      name: _board_outline
+      extrude: 3
+      operation: subtract
+    - what: outline
+      name: _keycap_outlines
+      extrude: 6
+      operation: add
+pcbs.ergonator:
     outlines:
         main.outline: _board_outline
         keycaps:
@@ -172,7 +171,7 @@ pcbs.production:
                 from: "{{name}}"
                 to: "{{row_net}}"
             adjust:
-                shift: [ -7.6, -1.6 ]
+                shift: [-7.6, -1.6]
                 rotate: 90
         choc:
             what: choc
@@ -206,7 +205,7 @@ pcbs.production:
         #     params:
         #         from: pos
         #         to: RAW
-        wuerth-434121025816:
+        wuerth-434121025816: # Reset Switch
             what: wuerth-434121025816
             where:
                 ref: main_inner_bottom
@@ -237,14 +236,27 @@ pcbs.production:
             what: keepout
             params:
                 points:
-                    -   x: -0.5
-                        y: -2
-                    -   x: 15.5
-                        y: -2
-                    -   x: 15.5
-                        y: 2
-                    -   x: -0.5
-                        y: 2
+                    - x: -0.5
+                      y: -2
+                    - x: 15.5
+                      y: -2
+                    - x: 15.5
+                      y: 2
+                    - x: -0.5
+                      y: 2
+        connector: # TRRS Connector
+            what: trrs
+            params:
+                reverse: true
+                symmetric: true
+                A: VCC
+                B: P2
+                C: P3
+                D: GND
+            where:
+                ref: main_inner_bottom
+                shift: [30, 0]
+                rotate: -90
         # peace: &icon
         #     what: peace
         #     where:
