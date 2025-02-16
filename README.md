@@ -10,7 +10,5 @@ This is fork of * <a href="https://github.com/Narkoleptika/josukey" target ="_bl
 * <a href="https://gitlab.com/Audijo/keyboard" target="_blank">Claw</a>
 * <a href="https://github.com/MrCarney/mrkeyboard" target="_blank">MrKeyboard</a>
 * <a href="https://github.com/foostan/crkbd" target="_blank">Corne keyboard</a>
-* <a href="https://github.com/zmkfirmware/zmk" target="_blank">ZMK</a>
-* <a href="https://github.com/manna-harbour/miryoku_zmk" target="_blank">Miryoku ZMK</a>
 * <a href="https://github.com/Narkoleptika/josukey" target ="_blank">Josukey</a>
 * <a href="https://flatfootfox.com/ergogen-introduction/" target ="_blank">FlatFootFox</a>
