@@ -1,6 +1,6 @@
 # Introduction
 
-This is fork of * <a href="https://github.com/Narkoleptika/josukey" target ="_blank">Josukey</a>. 
+This is fork of <a href="https://github.com/Narkoleptika/josukey" target ="_blank">Josukey</a>. 
 
 ## Thanks
 

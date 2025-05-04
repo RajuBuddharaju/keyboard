@@ -171,14 +171,15 @@ pcbs.ergonator:
                 from: "{{name}}"
                 to: "{{row_net}}"
             adjust:
-                shift: [-7.6, -1.6]
-                rotate: 90
+                shift: [0, -7.]
+                rotate: 0
         choc:
             what: choc
             where: true
             params:
                 keycaps: true
                 hotswap: true
+                reverse: true
                 from: "{{col_net}}"
                 to: "{{name}}"
         promicro:
@@ -205,7 +206,7 @@ pcbs.ergonator:
         #     params:
         #         from: pos
         #         to: RAW
-        wuerth-434121025816: # Reset Switch
+        reset_switch: # Reset Switch
             what: wuerth-434121025816
             where:
                 ref: main_inner_bottom
@@ -217,20 +218,17 @@ pcbs.ergonator:
         front_text: &text
             what: text
             where: &textWhere
-                ref: main_pinky_bottom
-                shift: [12, -7]
+                ref: main_inner_bottom
+                shift: [30, -25]
+                rotate: 85
             params: &textParams
-                text: Ergonator
-                justify: left
+                text: ERGONATOR[v1.0]
         back_text:
             <<: *text
-            where:
-                <<: *textWhere
-                shift: [27, -7]
             params:
                 <<: *textParams
                 layer: B.SilkS
-                justify: left mirror
+                justify: mirror
         safeText:
             <<: *text
             what: keepout
@@ -257,13 +255,13 @@ pcbs.ergonator:
                 ref: main_inner_bottom
                 shift: [30, 0]
                 rotate: -90
-        # peace: &icon
-        #     what: peace
-        #     where:
-        #         ref: main_inner_bottom
-        #         shift: [13, -6]
-        #     params:
-        #         scale: 2
+        peace: &icon
+            what: hand
+            where:
+                ref: main_inner_bottom
+                shift: [13, -6]
+            params:
+                scale: 10
         # love:
         #     <<: *icon
         #     what: love
@@ -280,3 +278,18 @@ pcbs.ergonator:
         #                 y: 13.25
         #             -   x: -0.5
         #                 y: 13.25
+        # ergonator_icon: &icon
+        #   what: hand
+        #   where:
+        #       ref: main_inner_bottom
+        #       shift: [30, -4]  # adjust position if needed
+        #   params:
+        #       scale: 1.8
+        # ergonator_icon_back:
+        #   <<: *icon
+        #   params:
+        #       <<: *icon.params
+        #       layer: B.SilkS
+        #       mirror: true
+
+
