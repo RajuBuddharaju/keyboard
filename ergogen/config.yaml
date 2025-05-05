@@ -1,4 +1,5 @@
 points:
+    rotate: 7
     key.padding: cy
     zones:
         main:
@@ -189,29 +190,12 @@ pcbs.ergonator:
             adjust:
                 shift: [22, 6.5]
                 rotate: -90
-        # jst-s2b-ph-kl:
-        #     what: jst-s2b-ph-kl
-        #     where:
-        #         ref: main_inner_bottom
-        #         shift: [21, -2]
-        #         rotate: 180
-        #     params:
-        #         neg: GND
-        # pcm12:
-        #     what: pcm12
-        #     where:
-        #         ref: main_inner_bottom
-        #         shift: [30.5, 3]
-        #         rotate: 90
-        #     params:
-        #         from: pos
-        #         to: RAW
         reset_switch: # Reset Switch
             what: wuerth-434121025816
             where:
                 ref: main_inner_bottom
-                shift: [30, -6]
-                rotate: 90
+                shift: [25, -6]
+                rotate: 0
             params:
                 r1: RST
                 r2: GND
@@ -255,41 +239,50 @@ pcbs.ergonator:
                 ref: main_inner_bottom
                 shift: [30, 0]
                 rotate: -90
-        peace: &icon
-            what: hand
+        hand_front: &icon
+            what: hand_front
             where:
                 ref: main_inner_bottom
-                shift: [13, -6]
+                shift: [13, -11]
+                rotate: -5
             params:
-                scale: 10
-        # love:
-        #     <<: *icon
-        #     what: love
-        # safeIcon:
-        #     <<: *icon
-        #     what: keepout
-        #     params:
-        #         points:
-        #             -   x: -0.5
-        #                 y: -0.5
-        #             -   x: 13.25
-        #                 y: -0.5
-        #             -   x: 13.25
-        #                 y: 13.25
-        #             -   x: -0.5
-        #                 y: 13.25
-        # ergonator_icon: &icon
-        #   what: hand
-        #   where:
-        #       ref: main_inner_bottom
-        #       shift: [30, -4]  # adjust position if needed
-        #   params:
-        #       scale: 1.8
-        # ergonator_icon_back:
-        #   <<: *icon
-        #   params:
-        #       <<: *icon.params
-        #       layer: B.SilkS
-        #       mirror: true
+                scale: 0.02
+        hand_back:
+            <<: *icon
+            what: hand_back
+        icon:
+            <<: *icon
+            what: keepout
+            params:
+                points:
+                    -   x: -0.5
+                        y: -0.5
+                    -   x: 13.25
+                        y: -0.5
+                    -   x: 13.25
+                        y: 13.25
+                    -   x: -0.5
+                        y: 13.25
+        holeTopLeft:
+          what: mountinghole
+          where:
+            ref: main_pinky_top
+            shift: [12, 0]
+        holeBottomLeft:
+          what: mountinghole
+          where:
+            ref: main_pinky_bottom
+            shift: [10, -1]
+        holeTopRight:
+          what: mountinghole
+          where:
+            ref: main_inner_top
+            shift: [10, -3]
+        holeBottomRight:
+          what: mountinghole
+          where:
+            ref: thumb_home_home
+            shift: [2, 15]
+
 
 

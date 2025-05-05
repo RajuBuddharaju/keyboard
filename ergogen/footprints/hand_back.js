@@ -3,7 +3,7 @@ module.exports = {
         scale: 1,
     },
     body: p => {
-        const points = [
+        const points = 	[
             [
                 397.7932618976338,
                 23.401832073855623
