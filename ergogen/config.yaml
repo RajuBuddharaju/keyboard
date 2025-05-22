@@ -1,6 +1,19 @@
+units:
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 4
+  py: ky + 4
+  # Double Padding Variables
+  dpx: kx + 8
+  dpy: ky + 8
+  # Defaults to M2 Screws
+  screwSize: 1.5
+  standoffSize: 2.5
 points:
     rotate: 7
-    key.padding: cy
+    key.padding: ky
     zones:
         main:
             anchor:
@@ -13,7 +26,7 @@ points:
                 pinky:
                     key:
                         col_net: P9
-                        spread: cx
+                        spread: kx
                     rows:
                         bottom:
                         home:
@@ -24,7 +37,7 @@ points:
                         origin: [-12, -19]
                         stagger: 4
                         splay: -7
-                        spread: cx
+                        spread: kx
                     rows:
                         bottom:
                         home:
@@ -33,7 +46,7 @@ points:
                     key:
                         col_net: P7
                         stagger: 2.5
-                        spread: cx
+                        spread: kx
                     rows:
                         bottom:
                         home:
@@ -42,7 +55,7 @@ points:
                     key:
                         col_net: P6
                         stagger: -2.5
-                        spread: cx
+                        spread: kx
                     rows:
                         bottom:
                         home:
@@ -51,7 +64,7 @@ points:
                     key:
                         col_net: P5
                         stagger: -2.5
-                        spread: cx
+                        spread: kx
                     rows:
                         bottom:
                         home:
@@ -59,21 +72,21 @@ points:
         thumb:
             anchor:
                 ref: main_inner_bottom
-                shift: [-1.2cx, -1.5cy]
+                shift: [-1.2kx, -1.5ky]
             rows.home.row_net: P10
             columns:
                 inner.key:
                     col_net: P7
-                    spread: cx
+                    spread: kx
                     splay: -5
                 home.key:
                     col_net: P6
-                    spread: cx + 2
+                    spread: kx + 2
                     rotate: -18
                     stagger: -3.2
                 outer.key:
                     col_net: P5
-                    spread: cx
+                    spread: kx
                     rotate: -36
                     stagger: -9.2
 outlines:
@@ -82,66 +95,66 @@ outlines:
           fillet: 2
           points:
               - ref: thumb_outer_home
-                shift: [0.6cx, 0.6cy]
+                shift: [0.5px, 0.5py]
               - ref: thumb_outer_home
-                shift: [0.6cx, -0.6cy]
+                shift: [0.5px, -0.5py]
               - ref: thumb_outer_home
-                shift: [-0.4cx, -0.6cy]
+                shift: [-0.4px, -0.5py]
 
               - ref: thumb_home_home
-                shift: [0.4cx, -0.6cy]
+                shift: [0.4px, -0.5py]
               - ref: thumb_home_home
-                shift: [-0.4cx, -0.6cy]
+                shift: [-0.4px, -0.5py]
 
               - ref: thumb_inner_home
-                shift: [0.4cx, -0.6cy]
+                shift: [0.4px, -0.5py]
               - ref: thumb_inner_home
-                shift: [-0.6cx, -0.6cy]
+                shift: [-0.5px, -0.5py]
 
               - ref: main_pinky_bottom
-                shift: [1.6cx, -0.6cy]
+                shift: [1.6px, -0.5py]
               - ref: main_pinky_bottom
-                shift: [0.6cx, -0.6cy]
+                shift: [0.5px, -0.5py]
               - ref: main_pinky_bottom
-                shift: [-0.6cx, -0.6cy]
+                shift: [-0.5px, -0.5py]
 
               - ref: main_pinky_top
-                shift: [-0.6cx, 0.6cy]
+                shift: [-0.5px, 0.5py]
               - ref: main_pinky_top
-                shift: [0.4cx, 0.6cy]
+                shift: [0.5px, 0.5py]
 
               - ref: main_ring_top
-                shift: [-0.5cx, 0.6cy]
+                shift: [-0.4px, 0.5py]
               - ref: main_ring_top
-                shift: [0.4cx, 0.6cy]
+                shift: [0.35px, 0.5py]
 
               - ref: main_middle_top
-                shift: [-0.4cx, 0.61cy]
+                shift: [-0.3px, 0.51py]
               - ref: main_middle_top
-                shift: [0.4cx, 0.6cy]
+                shift: [0.3px, 0.51py]
 
               - ref: main_index_top
-                shift: [-0.4cx, 0.6cy]
+                shift: [-0.3px, 0.5py]
               - ref: main_index_top
-                shift: [0.5cx, 0.6cy]
+                shift: [0.3px, 0.5py]
 
               - ref: main_inner_top
-                shift: [-0.4cx, 0.6cy]
+                shift: [-0.3px, 0.5py]
               - ref: main_inner_top
-                shift: [0.5cx, 0.6cy]
+                shift: [0.3px, 0.5py]
 
               - ref: main_inner_top
-                shift: [0.6cx, 0.4cy]
+                shift: [0.5px, 0.4py]
               - ref: main_inner_top
-                shift: [1.8cx, 0.4cy]
+                shift: [1.55px, 0.4py]
 
               - ref: main_inner_bottom
-                shift: [1.8cx, -0.6cy]
+                shift: [1.55px, -0.4py]
     _keycap_outlines:
         - what: rectangle
           fillet: 2
           where: true
-          size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+          size: [1kx - 0.5, 1ky - 0.5] # Choc keycaps are 17.5 x 16.5
     preview:
         - what: outline
           name: _board_outline
@@ -149,15 +162,6 @@ outlines:
         - what: outline
           name: _keycap_outlines
           operation: stack
-cases.ergonator:
-    - what: outline
-      name: _board_outline
-      extrude: 3
-      operation: subtract
-    - what: outline
-      name: _keycap_outlines
-      extrude: 6
-      operation: add
 pcbs.ergonator:
     outlines:
         main.outline: _board_outline
@@ -203,8 +207,8 @@ pcbs.ergonator:
             what: text
             where: &textWhere
                 ref: main_inner_bottom
-                shift: [30, -25]
-                rotate: 85
+                shift: [31, -25]
+                rotate: 82
             params: &textParams
                 text: ERGONATOR[v1.0]
         back_text:
@@ -230,7 +234,6 @@ pcbs.ergonator:
             what: trrs
             params:
                 reverse: true
-                symmetric: true
                 A: VCC
                 B: P2
                 C: P3
@@ -244,7 +247,7 @@ pcbs.ergonator:
             where:
                 ref: main_inner_bottom
                 shift: [13, -11]
-                rotate: -5
+                rotate: -8
             params:
                 scale: 0.02
         hand_back:
@@ -283,6 +286,9 @@ pcbs.ergonator:
           where:
             ref: thumb_home_home
             shift: [2, 15]
-
+cases:
+  bottom:
+    - name: _board_outline
+      extrude: 1
 
 
