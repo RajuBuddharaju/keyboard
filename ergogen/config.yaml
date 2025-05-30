@@ -1,3 +1,9 @@
+X-common:
+  any_place_where_a_key_is: &any_place_where_a_key_is /(?:thumb|main)_.*/gi
+  main_key_main_except_top: &main_key_main_except_top /^main_(?!.*top).*$/gi
+  main_key_main_except_bottom: &main_key_main_except_bottom /^main_(?!.*bottom).*$/gi
+  any_key_expect_the_outer_ones: &any_key_expect_the_outer_ones /(?:^main_(?!pinky)|^thumb_(?!.*inner)).*$/gi
+
 points:
     rotate: 7
     key.padding: cy
@@ -165,24 +171,221 @@ pcbs.ergonator:
             outline: _keycap_outlines
             layer: Eco1.User
     footprints:
-        diode:
-            what: sod-123w
-            where: true
-            params:
-                from: "{{name}}"
-                to: "{{row_net}}"
-            adjust:
-                shift: [0, -7.]
-                rotate: 0
-        choc:
+        choc-hotswap:
             what: choc
-            where: true
+            where: *any_place_where_a_key_is
             params:
                 keycaps: true
                 hotswap: true
                 reverse: true
                 from: "{{col_net}}"
                 to: "{{name}}"
+        choc-non-hotswap:
+            what: choc
+            where: *any_place_where_a_key_is
+            params:
+                keycaps: true
+                hotswap: false
+                reverse: true
+                from: "{{col_net}}"
+                to: "{{name}}"
+            adjust:
+                rotate: 180
+        via-top:
+            what: via
+            where: *any_place_where_a_key_is
+            params:
+                net: "{{name}}"
+            adjust:
+                shift:
+                    - &via-top-shift-x 0
+                    - &via-top-shift-y -3.5
+        via-middle:
+            what: via
+            where: *any_place_where_a_key_is
+            params:
+                net: "{{col_net}}"
+            adjust:
+                shift:
+                    - &via-middle-shift-x 0
+                    - &via-middle-shift-y 3.5
+        via-bottom:
+            what: via
+            where: *any_key_expect_the_outer_ones
+            params:
+                net: "{{row_net}}"
+            adjust:
+                shift:
+                    - &via-bottom-shift-x 0
+                    - &via-bottom-shift-y -8.5
+        diode:
+            what: sod-123w
+            where: *any_place_where_a_key_is
+            params:
+                from: "{{name}}"
+                to: "{{row_net}}"
+            adjust:
+                shift: [4.8, -7]
+                rotate: 180
+        route-from-top-via-to-higher-frond-pad:
+            what: route
+            where: *any_place_where_a_key_is
+            params:
+                side: &route-back B
+                net: "{{name}}"
+                points:
+                    - start: { x: *via-top-shift-x, y: *via-top-shift-y }
+                      end:
+                          x: &route-from-top-via-to-higher-pad-stop-1-x-frond -1
+                          y: &route-from-top-via-to-higher-pad-stop-1-y -4
+                    - start:
+                          x: *route-from-top-via-to-higher-pad-stop-1-x-frond
+                          y: *route-from-top-via-to-higher-pad-stop-1-y
+                      end:
+                          y: &route-from-top-via-to-higher-pad-stop-2-y -6
+                          x: &route-from-top-via-to-higher-pad-stop-2-x-left -3
+                    - start:
+                          x: *route-from-top-via-to-higher-pad-stop-1-x-frond
+                          y: *route-from-top-via-to-higher-pad-stop-1-y
+                      end:
+                          x: &route-from-top-via-to-higher-pad-stop-3-x-left -5
+                          y: &route-from-top-via-to-higher-pad-stop-3-y 4
+        route-from-top-via-to-higher-back-pad:
+            what: route
+            where: *any_place_where_a_key_is
+            params:
+                side: &route-frond F
+                net: "{{name}}"
+                points:
+                    - start: { x: *via-top-shift-x, y: *via-top-shift-y }
+                      end:
+                          x: &route-from-top-via-to-higher-pad-stop-1-x-back 1
+                          y: *route-from-top-via-to-higher-pad-stop-1-y
+                    - start:
+                          x: *route-from-top-via-to-higher-pad-stop-1-x-back
+                          y: *route-from-top-via-to-higher-pad-stop-1-y
+                      end:
+                          y: *route-from-top-via-to-higher-pad-stop-2-y
+                          x: &route-from-top-via-to-higher-pad-stop-2-x-right 3
+                    - start:
+                          x: *route-from-top-via-to-higher-pad-stop-1-x-back
+                          y: *route-from-top-via-to-higher-pad-stop-1-y
+                      end:
+                          x: &route-from-top-via-to-higher-pad-stop-3-x-right 5
+                          y: *route-from-top-via-to-higher-pad-stop-3-y
+        route-from-middle-via-to-lower-frond-pad:
+            what: route
+            where: *any_place_where_a_key_is
+            params:
+                side: *route-frond
+                net: "{{col_net}}"
+                points:
+                    - start: { x: *via-middle-shift-x, y: *via-middle-shift-y }
+                      end:
+                          x: &route-from-middle-via-to-lower-pad-stop-1-x-frond -5
+                          y: &route-from-middle-via-to-lower-pad-stop-1-y -1.5
+                    - start:
+                          x: *route-from-middle-via-to-lower-pad-stop-1-x-frond
+                          y: *route-from-middle-via-to-lower-pad-stop-1-y
+                      end:
+                          x: &route-from-middle-via-to-lower-pad-stop-2-x-frond -7
+                          y: &route-from-middle-via-to-lower-pad-stop-2-y -1.5
+                    - start:
+                          x: *route-from-middle-via-to-lower-pad-stop-2-x-frond
+                          y: *route-from-middle-via-to-lower-pad-stop-2-y
+                      end:
+                          y: &route-from-middle-via-to-lower-pad-stop-3-y -4
+                          x: -8.1
+        route-from-middle-via-to-lower-back-pad:
+            what: route
+            where: *any_place_where_a_key_is
+            params:
+                side: *route-back
+                net: "{{col_net}}"
+                points:
+                    - start: { x: *via-middle-shift-x, y: *via-middle-shift-y }
+                      end:
+                          x: &route-from-middle-via-to-lower-pad-stop-1-x-back 5
+                          y: *route-from-middle-via-to-lower-pad-stop-1-y
+                    - start:
+                          x: *route-from-middle-via-to-lower-pad-stop-1-x-back
+                          y: *route-from-middle-via-to-lower-pad-stop-1-y
+                      end:
+                          x: &route-from-middle-via-to-lower-pad-stop-2-x-back 7
+                          y: *route-from-middle-via-to-lower-pad-stop-2-y
+                    - start:
+                          x: *route-from-middle-via-to-lower-pad-stop-2-x-back
+                          y: *route-from-middle-via-to-lower-pad-stop-2-y
+                      end:
+                          y: *route-from-middle-via-to-lower-pad-stop-3-y
+                          x: 8.1
+        route-from-middle-via-to-lower-hole:
+            what: route
+            where: *any_place_where_a_key_is
+            params:
+                side: *route-back
+                net: "{{col_net}}"
+                points:
+                    - start: { x: *via-middle-shift-x, y: *via-middle-shift-y }
+                      end:
+                          x: &lower-hole-x 0
+                          y: &lower-hole-y 6
+                    - start: { x: *lower-hole-x, y: *lower-hole-y }
+                      end: { y: 7, x: 3.25 }
+        route-from-edge-to-bottom-via:
+            what: route
+            where: *any_key_expect_the_outer_ones
+            params:
+                side: *route-frond
+                net: "{{row_net}}"
+                points:
+                    - start: { y: &lower-via-route-start-y 8.5, x: -7.5 }
+                      end: { y: *lower-via-route-start-y, x: *via-bottom-shift-x }
+        route-from-bottom-via-to-diode:
+            what: route
+            where: *any_key_expect_the_outer_ones
+            params:
+                side: *route-back
+                net: "{{row_net}}"
+                points:
+                    - start:
+                          x: *via-bottom-shift-x
+                          y: *lower-via-route-start-y
+                      end:
+                          x: &to-lower-diode-stop-1-x 6.25
+                          y: *lower-via-route-start-y
+                    - start:
+                          x: *to-lower-diode-stop-1-x
+                          y: *lower-via-route-start-y
+                      end:
+                          x: *to-lower-diode-stop-1-x
+                          y: 7
+        route-from-higher-back-pad-to-upper-key:
+            what: route
+            where: *main_key_main_except_top
+            params:
+                side: *route-back
+                net: "{{name}}"
+                points:
+                    - start:
+                          y: *route-from-top-via-to-higher-pad-stop-2-y
+                          x: *route-from-top-via-to-higher-pad-stop-2-x-left
+                      end:
+                          y: -8.5
+                          x: &route-to-neighboring-key-x-left -4.7
+        route-from-higher-hole-pad-to-lower-key-left:
+            what: route
+            where: *main_key_main_except_bottom
+            params:
+                side: *route-back
+                net: "{{name}}"
+                points:
+                    - start:
+                          x: *route-from-top-via-to-higher-pad-stop-3-x-left
+                          y: *route-from-top-via-to-higher-pad-stop-3-y
+                      end:
+                          x: *route-to-neighboring-key-x-left
+                          y:  8.5
         promicro:
             what: promicro_pretty
             where:
