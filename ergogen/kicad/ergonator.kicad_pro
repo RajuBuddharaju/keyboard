@@ -248,11 +248,11 @@
       },
       {
         "netclass": "Default",
-        "pattern": "main_pinky_bottom"
+        "pattern": "P9"
       },
       {
         "netclass": "Default",
-        "pattern": "P4"
+        "pattern": "main_pinky_bottom"
       },
       {
         "netclass": "Default",
@@ -260,15 +260,11 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P0"
-      },
-      {
-        "netclass": "Default",
         "pattern": "main_pinky_top"
       },
       {
         "netclass": "Default",
-        "pattern": "P1"
+        "pattern": "P8"
       },
       {
         "netclass": "Default",
@@ -284,6 +280,10 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P7"
+      },
+      {
+        "netclass": "Default",
         "pattern": "main_middle_bottom"
       },
       {
@@ -296,6 +296,10 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P6"
+      },
+      {
+        "netclass": "Default",
         "pattern": "main_index_bottom"
       },
       {
@@ -305,6 +309,10 @@
       {
         "netclass": "Default",
         "pattern": "main_index_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P5"
       },
       {
         "netclass": "Default",
@@ -324,10 +332,6 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P10"
-      },
-      {
-        "netclass": "Default",
         "pattern": "thumb_home_home"
       },
       {
@@ -336,23 +340,19 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P9"
+        "pattern": "P4"
       },
       {
         "netclass": "Default",
-        "pattern": "P8"
+        "pattern": "P0"
       },
       {
         "netclass": "Default",
-        "pattern": "P7"
+        "pattern": "P1"
       },
       {
         "netclass": "Default",
-        "pattern": "P6"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P5"
+        "pattern": "P10"
       },
       {
         "netclass": "Default",

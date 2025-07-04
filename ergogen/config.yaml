@@ -109,12 +109,12 @@ outlines:
                 shift: [-0.4px, -0.5py]
 
               - ref: thumb_home_home
-                shift: [0.4px, -0.5py]
+                shift: [0.3px, -0.5py]
               - ref: thumb_home_home
                 shift: [-0.4px, -0.5py]
 
               - ref: thumb_inner_home
-                shift: [0.4px, -0.5py]
+                shift: [0.3px, -0.5py]
               - ref: thumb_inner_home
                 shift: [-0.5px, -0.5py]
 
@@ -157,6 +157,67 @@ outlines:
 
               - ref: main_inner_bottom
                 shift: [1.55px, -0.4py]
+    _xlboard_outline:
+        - what: polygon
+          fillet: 2
+          operation: stack
+          points:
+              - ref: thumb_outer_home
+                shift: [0.5dpx, 0.5dpy]
+              - ref: thumb_outer_home
+                shift: [0.5dpx, -0.5dpy]
+              - ref: thumb_outer_home
+                shift: [-0.4dpx, -0.5dpy]
+
+              - ref: thumb_home_home
+                shift: [0.3dpx, -0.5dpy]
+              - ref: thumb_home_home
+                shift: [-0.4dpx, -0.5dpy]
+
+              - ref: thumb_inner_home
+                shift: [0.3dpx, -0.5dpy]
+              - ref: thumb_inner_home
+                shift: [-0.5dpx, -0.5dpy]
+
+              - ref: main_pinky_bottom
+                shift: [1.6dpx, -0.5dpy]
+              - ref: main_pinky_bottom
+                shift: [0.5dpx, -0.5dpy]
+              - ref: main_pinky_bottom
+                shift: [-0.5dpx, -0.5dpy]
+
+              - ref: main_pinky_top
+                shift: [-0.5dpx, 0.5dpy]
+              - ref: main_pinky_top
+                shift: [0.5dpx, 0.5dpy]
+
+              - ref: main_ring_top
+                shift: [-0.4dpx, 0.5dpy]
+              - ref: main_ring_top
+                shift: [0.35dpx, 0.5dpy]
+
+              - ref: main_middle_top
+                shift: [-0.3dpx, 0.51dpy]
+              - ref: main_middle_top
+                shift: [0.3dpx, 0.51dpy]
+
+              - ref: main_index_top
+                shift: [-0.3dpx, 0.5dpy]
+              - ref: main_index_top
+                shift: [0.3dpx, 0.5dpy]
+
+              - ref: main_inner_top
+                shift: [-0.3dpx, 0.5dpy]
+              - ref: main_inner_top
+                shift: [0.3dpx, 0.5dpy]
+
+              - ref: main_inner_top
+                shift: [0.5dpx, 0.4dpy]
+              - ref: main_inner_top
+                shift: [1.55dpx, 0.4dpy]
+
+              - ref: main_inner_bottom
+                shift: [1.55dpx, -0.4dpy]
     _keycap_outlines:
         - what: rectangle
           fillet: 2
@@ -491,8 +552,24 @@ pcbs.ergonator:
             ref: thumb_home_home
             shift: [2, 15]
 cases:
-  bottom:
-    - name: _board_outline
-      extrude: 1
+    bottom:
+        -   name: _board_outline
+            extrude: 1
+    xlBottom:
+        -   name: _xlboard_outline
+            extrude: 1
+    _outerWall:
+        -   name: _xlboard_outline
+            extrude: 4
+    _innerWall:
+        -   name: _board_outline
+            extrude: 4
+    wall:
+        -   what: case
+            name: _outerWall
+            operation: add
+        -   what: case
+            name: _innerWall
+            operation: subtract
 
 
